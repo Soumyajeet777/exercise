@@ -6,4 +6,4 @@ The exercise is fairly simple. Create an implementation of the PersonRepoInterfa
 
 The solution will serve as a talking point at an interview. Here the focus will be on the style of the code, how the different methods have been implemented and the quality of the tests.
 
-When solving the exercise, please fork this repo into your own public repo, which you can then share with the owner of this repo.
+When solving the exercise, please fork this repo into your own public repo, which you can then share with the owner of this repo. Remember to commit all changes to the forked repo.
