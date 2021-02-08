@@ -38,7 +38,7 @@ public class PersonRepoImpl implements PersonRepoInterface {
 			if( p.equals(person)) {
 				
 				System.out.print("Person is already added");
-				throw new Exception e;  //custom exception
+				throw new InvalidException("Already Added");  //custom exception
 			}
 			else {
 				
@@ -56,34 +56,27 @@ public class PersonRepoImpl implements PersonRepoInterface {
 			
 			people.forEach((p1) ->{
 				
-				//try catch calling saveperson
+				try {
+					 savePerson(p1);
+				}
+				catch(Exception e){
 				
-				if(!personList.contains(p1))
-				{
-					personList.add(p1);
+					System.out.println("Exception occured: "+e);
+					
+					
 				}
 
 				
 			});
 			
-
-		//personList.addAll(people);
 		
 	}
 
 	@Override
 	public Person getPerson(String id) {
-		// TODO Auto-generated method stub
-		List<Person> personList1 = new ArrayList<Person>();
+		// TODO Auto-generated method stub	
 		
-		personList.forEach((person) -> {
-			
-			if(person.getId() == id) {
-				personList1.add(person);
-			}
-			
-			
-		});
+		List<Person> personList1 = personList.stream().filter(person -> person.getId() == id).collect(Collectors.toList());
 		
 		return personList1.get(0);
 		
@@ -93,21 +86,13 @@ public class PersonRepoImpl implements PersonRepoInterface {
 	@Override
 	public List<Person> getPeopleInZipCode(int zipCode) {
 		// TODO Auto-generated method stub
-		List<Person> personList2 = new ArrayList<Person>();
-        
 		
-		personList.forEach((person) -> {
-			
-			if(person.getZipCode() == zipCode) {
-				personList2.add(person);
-			}
-			
-			
-		});
+        List<Person> personList1 = personList.stream().filter(person -> person.getZipCode() == zipCode).collect(Collectors.toList());
 		
-		return personList2;
+		return personList1;
 	}
 
+	
 	@Override
 	public List<Person> getPeopleWithAge(int age) {
 		// TODO Auto-generated method stub

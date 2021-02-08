@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.group.exercise.model.Person;
 import com.group.exercise.repository.PersonRepoInterface;
+import com.group.exercise.service.InvalidException;
 import com.group.exercise.service.PersonRepoImpl;
 
 import static org.junit.Assert.*;
@@ -42,6 +43,19 @@ class ExerciseApplicationTests {
 			assertTrue(allPersonList.contains(personTest));
 			
 			}
+	        
+	        
+	        @Test
+	        public void savePersonTestWithExistingValue() {
+	        	
+	        	Person personTest = new Person("121","Soumya",27,713304);
+				
+				Exception exception = assertThrows(InvalidException.class, () -> {
+					   personRepoInterface.savePerson(personTest );
+				    });
+	        }
+	        
+	        
 			
 	        @Test
 			//Test for savePeople
@@ -49,10 +63,14 @@ class ExerciseApplicationTests {
 			public void savePeopleTest() {
 			List<Person> personListTest = new ArrayList<>();
 			
+			List<Person> allPersonList = personRepoImpl.getAllPersons();.4
+			
 			personListTest.add(new Person("126","Madhu",25,713301));
 			personListTest.add(new Person("125","Rima",32,411028));
 			personListTest.add(new Person("127","Sarkar",30,100011));
 			personRepoInterface.savePeople(personListTest);
+			
+			assertTrue(allPersonList.contains(personListTest));
 			
 			}
 			
