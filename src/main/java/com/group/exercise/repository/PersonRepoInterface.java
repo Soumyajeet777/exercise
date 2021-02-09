@@ -1,7 +1,6 @@
 package com.group.exercise.repository;
 
 import com.group.exercise.model.Person;
-import com.group.exercise.service.InvalidException;
 
 import java.util.List;
 

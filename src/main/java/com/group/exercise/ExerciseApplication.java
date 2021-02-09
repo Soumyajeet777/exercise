@@ -15,9 +15,7 @@ public class ExerciseApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ExerciseApplication.class, args);
-		
-	//	List<Person> personlist = new ArrayList<Person>();
-		
+			
 		
 		
 	}

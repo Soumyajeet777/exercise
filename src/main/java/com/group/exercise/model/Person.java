@@ -1,6 +1,5 @@
 package com.group.exercise.model;
 
-import java.util.List;
 
 public class Person {
 
